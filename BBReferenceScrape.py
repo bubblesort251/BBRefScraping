@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
@@ -25,7 +26,6 @@ list_of_rows2 = []
 for row in list_of_rows:
 	r = row[:6]
 	list_of_rows2.append(r)
-
-with open("./octoberGames.csv", "wb") as outfile:
-	writer = csv.writer(outfile)
-	writer.writerows(list_of_rows2)
+    
+df = pd.DataFrame(data=list_of_rows2, dtype=str )
+df.to_csv('test.csv', header=None, index=False)
